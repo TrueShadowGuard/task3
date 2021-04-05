@@ -14,12 +14,11 @@ public class Main {
             System.out.println("Number of moves must be >= 3 and odd");
             System.exit(0);
         }
-
-        var key = UUID.randomUUID().toString().replace("-","");
+        int computerTurn = 1 + new Random().nextInt(moves.length - 1);
+        var key = UUID.randomUUID().toString().replace("-","") + moves[computerTurn - 1];
         var digest = MessageDigest.getInstance("SHA-256");
         var encodedhash = digest.digest(key.getBytes(StandardCharsets.UTF_8));
         var hash = bytesToHex(encodedhash);
-        int computerTurn = 1 + new Random().nextInt(moves.length - 1);
         System.out.println(hash);
         final var sc = new Scanner(System.in);
 
